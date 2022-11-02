@@ -2,6 +2,8 @@
 
 ## Init
 
+### Create a project and setting
+
 ```sh
 docker-compose up
 
@@ -14,6 +16,11 @@ sudo chown -R www-data:www-data todo-app/
 sudo chmod -R 775 todo-app/
 sudo gpasswd -a `whoami` www-data
 ```
+
+### DB Setting
+
+DB_DATABASE in .env must be matched db.container_name in the docker-compose-yml.  
+DB_PORT in .env must be matched "Docker DB container port".
 
 ## References
 

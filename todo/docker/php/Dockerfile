@@ -1,11 +1,14 @@
 FROM php:8.0-fpm
 COPY php.ini /usr/local/etc/php/
 
+# Disable mbstring.internal_encoding because this property is deprecated.
+RUN sed -i 's/mbstring.internal_encoding = "UTF-8"/;mbstring.internal_encoding = "UTF-8"/g' /usr/local/etc/php/php.ini
+
 RUN apt-get update \
   && apt-get install -y zlib1g-dev mariadb-client vim libzip-dev \
   && docker-php-ext-install zip pdo_mysql
 
-#Composer install
+# Composer install
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"

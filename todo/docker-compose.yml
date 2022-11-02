@@ -21,7 +21,7 @@ services:
     container_name: todo_db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: database
+      MYSQL_DATABASE: todo_db
       MYSQL_USER: db-user
       MYSQL_PASSWORD: db-pass
       TZ: "Asia/Tokyo"
@@ -31,4 +31,4 @@ services:
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./docker/db/sql:/docker-entrypoint-initdb.d
     ports:
-      - 3306:3306
+      - 13306:3306
