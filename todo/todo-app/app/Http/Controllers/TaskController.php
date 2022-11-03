@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Folder;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\Promise\all;
@@ -13,9 +14,14 @@ class TaskController extends Controller
     {
         $folders = Folder::all();
 
+        $current_folder = Folder::find($id);
+
+        $tasks = $current_folder->tasks()->get();
+
         return view('tasks/index', [
             'folders' => $folders,
             'current_folder_id' => $id,
+            'tasks' => $tasks,
         ]);
     }
 }
