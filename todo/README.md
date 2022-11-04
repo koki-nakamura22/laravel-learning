@@ -22,6 +22,15 @@ sudo gpasswd -a `whoami` www-data
 DB_DATABASE in .env must be matched db.container_name in the docker-compose-yml.  
 DB_PORT in .env must be matched "Docker DB container port".
 
+### Enable Auth function
+
+```sh
+docker-compose exec app bash
+composer require laravel/ui:3.4.6
+exit
+php artisan ui vue --auth
+```
+
 ## References
 
 - [入門Laravelチュートリアル](https://www.hypertextcandy.com/laravel-tutorial-introduction)
