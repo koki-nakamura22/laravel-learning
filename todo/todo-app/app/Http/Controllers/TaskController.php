@@ -6,6 +6,7 @@ use App\Http\Requests\CreateTask;
 use App\Http\Requests\EditTask;
 use App\Models\Folder;
 use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\Promise\all;
@@ -14,7 +15,7 @@ class TaskController extends Controller
 {
     public function index(int $id)
     {
-        $folders = Folder::all();
+        $folders = Auth::user()->folders()->get();
 
         $current_folder = Folder::find($id);
 
