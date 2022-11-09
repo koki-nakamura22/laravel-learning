@@ -22,5 +22,8 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 
+# xdebug
+**/log
+
 # Docker
 **/docker/db

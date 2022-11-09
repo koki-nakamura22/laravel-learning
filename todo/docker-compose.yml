@@ -5,6 +5,8 @@ services:
     build: ./docker/php
     volumes:
       - .:/var/www
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./log:/var/log
   nginx:
     image: nginx
     container_name: todo_nginx
