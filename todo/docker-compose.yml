@@ -7,6 +7,10 @@ services:
       - .:/var/www
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
       - ./log:/var/log
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    expose:
+      - 9003
   nginx:
     image: nginx
     container_name: todo_nginx
